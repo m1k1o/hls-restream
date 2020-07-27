@@ -44,7 +44,7 @@ http://localhost/ch1_hd.m3u8
 http://localhost/ch2_hd.m3u8
 ```
 
-In case or error, troubleshoot:
+In case of error, troubleshoot:
 
 ```sh
 docker logs hls
