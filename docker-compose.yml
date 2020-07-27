@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+  hls:
+    build: "./"
+    container_name: "hls"
+    restart: "always"
+    tmpfs:
+      - "/var/www/html:mode=777,size=128M,uid=1000,gid=1000"
+    ports:
+      - "80:80"
+    environment:
+      SOURCES: |
+        ch1     rtsp://192.168.1.5:554/ch1
+        ch2     rtsp://192.168.1.5:554/ch2
+        ch1_hd  http://192.168.1.6/stream/channelid/8967896?profile=pass
+        ch2_hd  http://192.168.1.6/stream/channelid/4969639?profile=pass
