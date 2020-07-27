@@ -8,7 +8,7 @@ You need to have docker & docker-compose installed.
 1. Clone this repository:
 ```sh
 git clone https://github.com/m1k1o/hls-restream
-cd /hls-restream
+cd hls-restream
 ```
 
 2. Modify `docker-compose.yml` and add your own sources:
