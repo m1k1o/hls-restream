@@ -18,8 +18,8 @@ RUN mkdir -p /var/log/supervisor; \
     useradd --uid $USER_UID --gid $USERNAME --shell /bin/bash --create-home $USERNAME; \
     chown $USERNAME /var/www/html;
 
-COPY supervisord.conf ./
-COPY *.sh ./
+COPY supervisord.conf entrypoint.sh ./
+COPY profiles profiles
 
 ENV USER=$USERNAME
 

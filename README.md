@@ -24,6 +24,7 @@ services:
     ports:
       - "80:80"
     environment:
+      PROFILE: passthrough
       SOURCES: |
         # SD Channels:
         ch1     rtsp://192.168.1.5:554/ch1
@@ -32,6 +33,18 @@ services:
         ch1_hd  http://192.168.1.6/stream/channelid/8967896?profile=pass
         ch2_hd  http://192.168.1.6/stream/channelid/4969639?profile=pass
 ```
+
+Profiles can you find in `profiles/` folder.
+* passthrough - default, no transcoding.
+
+H264 adaptive bitrate transcoding:
+* abr_transcoding_sd - 360p and 480p
+* abr_transcoding_hd - 360p, 480p and 720p
+* abr_transcoding_hd_1080p - 360p, 480p, 720p and 1080p
+
+H264 transcoding:
+* transcoding_hd - 720p only
+* transcoding_sd - 480p only
 
 3. Start docker compose (run this everytime you modify stream sources):
 ```sh

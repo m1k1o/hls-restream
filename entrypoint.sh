@@ -3,7 +3,7 @@
 function generate_entry {
     echo ''
     echo "[program:ffmpeg-$1]"
-    echo "command=/usr/src/ffmpeg.sh '$1' '$2'"
+    echo "command=/usr/src/profiles/${PROFILE:=passthrough}.sh '$1' '$2'"
     echo 'autostart=true'
     echo 'autorestart=true'
     echo 'startretries=5'
