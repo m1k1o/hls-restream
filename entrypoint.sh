@@ -25,10 +25,17 @@ IFS=$SAVEIFS       # Restore IFS
 for (( i=0; i<${#SOURCES[@]}; i++ ))
 do
     ROW=(${SOURCES[$i]})
-    echo "[$i] name: ${ROW[0]}"
-    echo "[$i]  url: ${ROW[1]}"
+    NAME=${ROW[0]}
+    URL=${ROW[1]}
 
-    generate_entry "${ROW[0]}" "${ROW[1]}"
+    if [[ ${NAME:0:1} == "#" ]]; then
+        continue
+    fi
+
+    echo "[$i] name: ${NAME}"
+    echo "[$i]  url: ${URL}"
+
+    generate_entry "${NAME}" "${URL}"
 done
 
 cat /usr/src/supervisord.conf
