@@ -25,8 +25,10 @@ services:
       - "80:80"
     environment:
       SOURCES: |
+        # SD Channels:
         ch1     rtsp://192.168.1.5:554/ch1
         ch2     rtsp://192.168.1.5:554/ch2
+        # HD Channels:
         ch1_hd  http://192.168.1.6/stream/channelid/8967896?profile=pass
         ch2_hd  http://192.168.1.6/stream/channelid/4969639?profile=pass
 ```
