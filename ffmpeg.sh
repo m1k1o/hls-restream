@@ -1,7 +1,6 @@
 #!/bin/sh
 ffmpeg -hide_banner \
     -i "$2" \
-    -map_metadata -1 \
     -map 0 \
     -c:v copy \
     -c:a copy \
