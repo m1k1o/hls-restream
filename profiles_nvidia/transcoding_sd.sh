@@ -2,7 +2,7 @@
 ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
       -i "$2" \
       -sn \
-      -vf scale=w=842:h=480:force_original_aspect_ratio=decrease \
+      -vf scale_npp=842:480 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 128k \

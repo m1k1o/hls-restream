@@ -11,13 +11,13 @@ function generate_playlist {
       echo "$1_720p.m3u8"
       echo '#EXT-X-STREAM-INF:BANDWIDTH=5000000,RESOLUTION=1920x1080'
       echo "$1_1080p.m3u8"
-} > "/var/www/html/$1.m3u8" 
-generate_playlist
+} > "/var/www/html/$1.m3u8"
+generate_playlist "$1"
 
 ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
       -i "$2" \
       -sn \
-      -vf scale=w=640:h=360:force_original_aspect_ratio=decrease \
+      -vf scale_npp=640:360 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 96k \
@@ -40,7 +40,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
                   -hls_segment_filename "/var/www/html/$1_360p_%03d.ts" \
                   "/var/www/html/$1_360p.m3u8" \
       -sn \
-      -vf scale=w=842:h=480:force_original_aspect_ratio=decrease \
+      -vf scale_npp=842:480 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 128k \
@@ -63,7 +63,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
                   -hls_segment_filename "/var/www/html/$1_480p_%03d.ts" \
                   "/var/www/html/$1_480p.m3u8" \
       -sn \
-      -vf scale=w=1280:h=720:force_original_aspect_ratio=decrease \
+      -vf scale_npp=1280:720 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 128k \
@@ -86,7 +86,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
                   -hls_segment_filename "/var/www/html/$1_720p_%03d.ts" \
                   "/var/www/html/$1_720p.m3u8" \
       -sn \
-      -vf scale=w=1920:h=1080:force_original_aspect_ratio=decrease \
+      -vf scale_npp=1920:1080 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 192k \

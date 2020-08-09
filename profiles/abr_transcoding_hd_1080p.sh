@@ -11,8 +11,8 @@ function generate_playlist {
       echo "$1_720p.m3u8"
       echo '#EXT-X-STREAM-INF:BANDWIDTH=5000000,RESOLUTION=1920x1080'
       echo "$1_1080p.m3u8"
-} > "/var/www/html/$1.m3u8" 
-generate_playlist
+} > "/var/www/html/$1.m3u8"
+generate_playlist "$1"
 
 ffmpeg -hide_banner \
       -i "$2" \
