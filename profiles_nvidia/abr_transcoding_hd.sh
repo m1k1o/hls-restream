@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function generate_playlist {
       echo '#EXTM3U'
@@ -14,6 +14,7 @@ generate_playlist
 
 ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
       -i "$2" \
+      -sn \
       -vf scale=w=640:h=360:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \
@@ -36,6 +37,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_360p_%03d.ts" \
                   "/var/www/html/$1_360p.m3u8" \
+      -sn \
       -vf scale=w=842:h=480:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \
@@ -58,6 +60,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_480p_%03d.ts" \
                   "/var/www/html/$1_480p.m3u8" \
+      -sn \
       -vf scale=w=1280:h=720:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \

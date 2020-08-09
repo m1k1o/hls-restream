@@ -73,7 +73,7 @@ You will need to have [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) i
 ```
 docker build -t hls_nvidia -f Dockerfile.nvidia .
 docker run -d --gpus=all \
-  --name hls-nvidia \
+  --name hls_nvidia \
   -p 80:80 \
   -e "STREAMS=ch rtsp://192.168.1.5:554/ch" \
   hls_nvidia
