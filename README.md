@@ -71,7 +71,7 @@ docker exec -it hls sh -c 'cd /var/log/supervisor && /bin/bash'
 You will need to have [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) installed.
 
 ```
-docker build -t hls_nvidia .
+docker build -t hls_nvidia -f Dockerfile.nvidia .
 docker run -d --gpus=all \
   --name hls-nvidia \
   -p 80:80 \
