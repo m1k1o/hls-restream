@@ -65,3 +65,16 @@ In case of error, troubleshoot:
 docker logs hls
 docker exec -it hls sh -c 'cd /var/log/supervisor && /bin/bash'
 ```
+
+# NVIDIA GPU Hardware decoding
+
+You will need to have [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) installed.
+
+```
+docker build -t hls_nvidia .
+docker run -d --gpus=all \
+  --name hls-nvidia \
+  -p 80:80 \
+  -e "STREAMS=ch rtsp://192.168.1.5:554/ch" \
+  hls_nvidia
+```
