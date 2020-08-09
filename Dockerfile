@@ -20,6 +20,7 @@ RUN mkdir -p /var/log/supervisor; \
 
 COPY supervisord.conf entrypoint.sh ./
 COPY profiles profiles
+COPY player.html /var/www/html/index.html
 
 ENV USER=$USERNAME
 
