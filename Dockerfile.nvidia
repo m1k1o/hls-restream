@@ -1,0 +1,26 @@
+FROM willprice/nvidia-ffmpeg
+
+WORKDIR /usr/src
+
+RUN set -eux; apt-get update; \
+    apt-get install -y --no-install-recommends nginx supervisor; \
+    #
+    # clean up
+    rm -rf /var/lib/apt/lists/*;
+
+ARG USERNAME=user
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+
+RUN mkdir -p /var/log/supervisor; \
+    mkdir -p /var/www/html; \
+    groupadd --gid $USER_GID $USERNAME; \
+    useradd --uid $USER_UID --gid $USERNAME --shell /bin/bash --create-home $USERNAME; \
+    chown $USERNAME /var/www/html;
+
+COPY supervisord.conf entrypoint.sh ./
+COPY profiles_nvidia profiles
+
+ENV USER=$USERNAME
+
+ENTRYPOINT ["./entrypoint.sh"]
