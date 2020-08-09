@@ -66,7 +66,7 @@ docker logs hls
 docker exec -it hls sh -c 'cd /var/log/supervisor && /bin/bash'
 ```
 
-# NVIDIA GPU Hardware decoding
+# NVIDIA GPU hardware acceleration
 
 You will need to have [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) installed.
 
