@@ -75,6 +75,30 @@ docker build -t hls_nvidia -f Dockerfile.nvidia .
 docker run -d --gpus=all \
   --name hls_nvidia \
   -p 80:80 \
-  -e "STREAMS=ch rtsp://192.168.1.5:554/ch" \
+  -e 'PROFILE=transcoding_sd' \
+  -e 'SOURCES=
+        # SD Channels:
+        ch1     rtsp://192.168.1.5:554/ch1
+        ch2     rtsp://192.168.1.5:554/ch2
+        # HD Channels:
+        ch1_hd  http://192.168.1.6/stream/channelid/8967896?profile=pass
+        ch2_hd  http://192.168.1.6/stream/channelid/4969639?profile=pass
+  ' \
   hls_nvidia
+```
+
+## Supported inputs
+
+```
+| Codec      | CUVID       | Codec Name                                |
+| ---------- | ----------- | ----------------------------------------- |
+| h264       | h264_cuvid  | H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 |
+| hevc       | hevc_cuvid  | H.265 / HEVC                              |
+| mjpeg      | mjpeg_cuvid | Motion JPEG                               |
+| mpeg1video | mpeg1_cuvid | MPEG-1 video                              |
+| mpeg2video | mpeg2_cuvid | MPEG-2 video                              |
+| mpeg4      | mpeg4_cuvid | MPEG-4 part 2                             |
+| vc1        | vc1_cuvid   | SMPTE VC-1                                |
+| vp8        | vp8_cuvid   | On2 VP8                                   |
+| vp9        | vp9_cuvid   | Google VP9                                |
 ```
