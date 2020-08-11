@@ -20,7 +20,7 @@ generate_playlist "$1"
 ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
-      -vf scale_npp=640:360 \
+      -vf yadif_cuda=0:-1:1,scale_npp=640:360 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 96k \
