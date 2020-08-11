@@ -1,5 +1,8 @@
 #!/bin/bash
 
+cd "$(dirname "$0")"
+source .helpers.sh
+
 function generate_playlist {
       echo '#EXTM3U'
       echo '#EXT-X-VERSION:3'
@@ -14,7 +17,7 @@ function generate_playlist {
 } > "/var/www/html/$1.m3u8"
 generate_playlist "$1"
 
-ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
+ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
       -vf scale_npp=640:360 \

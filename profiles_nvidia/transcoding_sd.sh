@@ -1,5 +1,9 @@
-#!/bin/sh
-ffmpeg -hide_banner -hwaccel cuvid -c:v h264_cuvid \
+#!/bin/bash
+
+cd "$(dirname "$0")"
+source .helpers.sh
+
+ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
       -vf scale_npp=842:480 \
