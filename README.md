@@ -89,7 +89,8 @@ docker run -d --gpus=all \
 
 ## Supported inputs
 
-```
+Input codec will be automatically determined from given stream. Please check your graphic card's supported codec and maximum concurrent sessions [here](https://developer.nvidia.com/video-encode-decode-gpu-support-matrix).
+
 | Codec      | CUVID       | Codec Name                                |
 | ---------- | ----------- | ----------------------------------------- |
 | h264       | h264_cuvid  | H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 |
@@ -101,4 +102,3 @@ docker run -d --gpus=all \
 | vc1        | vc1_cuvid   | SMPTE VC-1                                |
 | vp8        | vp8_cuvid   | On2 VP8                                   |
 | vp9        | vp9_cuvid   | Google VP9                                |
-```
