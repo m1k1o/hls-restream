@@ -6,7 +6,7 @@ source .helpers.sh
 ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
-      -vf yadif_cuda=0:-1:1,scale_npp=1280:720 \
+      -vf yadif_cuda=0:-1:0,scale_npp=1280:720 \
             -c:a aac \
                   -ar 48000 \
                   -b:a 128k \
