@@ -93,7 +93,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
             -c:a aac \
                   -ar 48000 \
                   -b:a 192k \
-            -c:v h264 \
+            -c:v h264_nvenc \
                   -profile:v main \
                   -b:v 5000k \
                   -maxrate 5350k \
