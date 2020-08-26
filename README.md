@@ -74,6 +74,7 @@ You will need to have [nvidia-docker](https://github.com/NVIDIA/nvidia-docker) i
 docker build -t hls_nvidia -f Dockerfile.nvidia .
 docker run -d --gpus=all \
   --name hls_nvidia \
+  --tmpfs /var/www/html:mode=777,size=128M,uid=1000,gid=1000 \
   -p 80:80 \
   -e 'PROFILE=transcoding_sd' \
   -e 'SOURCES=
