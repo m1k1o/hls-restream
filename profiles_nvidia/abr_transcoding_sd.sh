@@ -16,7 +16,7 @@ generate_playlist "$1"
 ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
-      -vf yadif_cuda=0:-1:0,scale_npp=640:360 \
+      -vf yadif_cuda=0:-1:0,scale_npp=640:360:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
                   -b:a 96k \
@@ -39,7 +39,7 @@ ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
                   -hls_segment_filename "/var/www/html/$1_360p_%03d.ts" \
                   "/var/www/html/$1_360p.m3u8" \
       -sn \
-      -vf yadif_cuda=0:-1:0,scale_npp=842:480 \
+      -vf yadif_cuda=0:-1:0,scale_npp=842:480:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
                   -b:a 128k \
