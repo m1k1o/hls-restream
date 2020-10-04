@@ -3,7 +3,7 @@
 cd "$(dirname "$0")"
 source .helpers.sh
 
-ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
+ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
       -vf yadif_cuda=0:-1:0,scale_npp=1280:720:interp_algo=super \

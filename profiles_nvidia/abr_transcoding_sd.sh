@@ -13,7 +13,7 @@ function generate_playlist {
 } > "/var/www/html/$1.m3u8"
 generate_playlist "$1"
 
-ffmpeg -hide_banner -hwaccel cuvid -c:v "$(cuvid_codec "$2")" \
+ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
       -sn \
       -vf yadif_cuda=0:-1:0,scale_npp=640:360:interp_algo=super \
