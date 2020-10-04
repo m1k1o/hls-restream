@@ -23,5 +23,6 @@ COPY profiles_nvidia profiles
 COPY player.html /var/www/html/index.html
 
 ENV USER=$USERNAME
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility,video
 
 ENTRYPOINT ["./entrypoint.sh"]
