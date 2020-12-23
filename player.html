@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Player</title>
-		<link href="https://unpkg.com/video.js@7.8.4/dist/video-js.css" rel="stylesheet" />
-		<link href="https://unpkg.com/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.css" rel="stylesheet" />
+		<link href="https://unpkg.com/video.js@7.10.2/dist/video-js.css" rel="stylesheet" />
+		<link href="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.css" rel="stylesheet" />
 	</head>
 	<body>
 		<h1>Player</h1>
@@ -16,12 +16,12 @@
 		<video-js id="my_player" class="vjs-default-skin" controls preload="auto" width="640" height="268"></video-js>
 
 		<!--This is for Video.js by itself -->
-		<script src="https://unpkg.com/video.js@7.8.4/dist/video.js"></script>
+		<script src="https://unpkg.com/video.js@7.10.2/dist/video.js"></script>
 		<script src="https://unpkg.com/videojs-contrib-quality-levels@2.0.9/dist/videojs-contrib-quality-levels.min.js"></script>
-		<script src="https://unpkg.com/videojs-hls-quality-selector@1.1.1/dist/videojs-hls-quality-selector.min.js"></script>
+		<script src="https://unpkg.com/videojs-hls-quality-selector@1.1.4/dist/videojs-hls-quality-selector.min.js"></script>
 
 		<!--This is for HLS compatibility with all major browsers-->
-		<script src="https://unpkg.com/@videojs/http-streaming@1.13.3/dist/videojs-http-streaming.min.js"></script>
+		<script src="https://unpkg.com/@videojs/http-streaming@2.4.1/dist/videojs-http-streaming.min.js"></script>
 
 		<script>
 			var player = videojs('my_player');
