@@ -1,7 +1,7 @@
 #!/bin/sh
 ffmpeg -hide_banner \
       -i "$2" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf scale=w=842:h=480:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \

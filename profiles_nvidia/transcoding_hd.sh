@@ -5,7 +5,7 @@ source .helpers.sh
 
 ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf hwupload_cuda,yadif_cuda=0:-1:0,scale_npp=1280:720:interp_algo=super \
             -c:a aac \
                   -ar 48000 \

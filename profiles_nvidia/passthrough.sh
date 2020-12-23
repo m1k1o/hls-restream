@@ -1,8 +1,7 @@
 #!/bin/sh
 ffmpeg -hide_banner \
       -i "$2" \
-      -sn \
-      -map 0 \
+      -map 0:v:0 -map 0:a:0 \
       -c:v copy \
       -c:a copy \
       -f hls \

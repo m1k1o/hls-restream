@@ -16,7 +16,7 @@ generate_playlist "$1"
 
 ffmpeg -hide_banner \
       -i "$2" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf scale=w=640:h=360:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \
@@ -39,7 +39,7 @@ ffmpeg -hide_banner \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_360p_%03d.ts" \
                   "/var/www/html/$1_360p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf scale=w=842:h=480:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \
@@ -62,7 +62,7 @@ ffmpeg -hide_banner \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_480p_%03d.ts" \
                   "/var/www/html/$1_480p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf scale=w=1280:h=720:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \
@@ -85,7 +85,7 @@ ffmpeg -hide_banner \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_720p_%03d.ts" \
                   "/var/www/html/$1_720p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf scale=w=1920:h=1080:force_original_aspect_ratio=decrease \
             -c:a aac \
                   -ar 48000 \

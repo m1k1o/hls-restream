@@ -19,7 +19,7 @@ generate_playlist "$1"
 
 ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
       -i "$2" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf hwupload_cuda,yadif_cuda=0:-1:0,scale_npp=640:360:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
@@ -42,7 +42,7 @@ ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_360p_%03d.ts" \
                   "/var/www/html/$1_360p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf hwupload_cuda,yadif_cuda=0:-1:0,scale_npp=842:480:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
@@ -65,7 +65,7 @@ ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_480p_%03d.ts" \
                   "/var/www/html/$1_480p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf hwupload_cuda,yadif_cuda=0:-1:0,scale_npp=1280:720:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
@@ -88,7 +88,7 @@ ffmpeg -hide_banner -hwaccel_output_format cuda -c:v "$(cuvid_codec "$2")" \
                   -hls_start_number_source datetime \
                   -hls_segment_filename "/var/www/html/$1_720p_%03d.ts" \
                   "/var/www/html/$1_720p.m3u8" \
-      -sn \
+      -map 0:v:0 -map 0:a:0 \
       -vf hwupload_cuda,yadif_cuda=0:-1:0,scale_npp=1920:1080:interp_algo=super \
             -c:a aac \
                   -ar 48000 \
