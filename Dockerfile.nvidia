@@ -1,4 +1,5 @@
-FROM willprice/nvidia-ffmpeg
+ARG BASE_IMAGE=willprice/nvidia-ffmpeg
+FROM $BASE_IMAGE as base
 
 WORKDIR /usr/src
 
