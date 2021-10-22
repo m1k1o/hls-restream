@@ -21,6 +21,7 @@ RUN mkdir -p /var/log/supervisor; \
 COPY supervisord.conf entrypoint.sh ./
 COPY profiles profiles
 COPY player.html /var/www/html/index.html
+COPY nginx.conf /etc/nginx/sites-enabled/default
 
 ENV USER=$USERNAME
 
