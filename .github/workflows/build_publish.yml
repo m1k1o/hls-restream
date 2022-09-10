@@ -1,0 +1,27 @@
+name: Build and publish image
+
+on:
+  push:
+    branches:
+      - 'master'
+
+env:
+  REGISTRY: ghcr.io
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Build and publish image job
+    steps:
+      - name: Checkout master
+        uses: actions/checkout@master
+      - name: Build and publish image
+        uses: ilteoood/docker_buildx@master
+        with:
+          tag: latest
+          imageName: ${{ env.REGISTRY }}/${{ github.repository }}
+          platform: linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/arm/v7
+          publish: true
+          dockerServer: ${{ env.REGISTRY }}
+          dockerUser: ${{ github.actor }}
+          dockerPassword: ${{ secrets.GITHUB_TOKEN }}
