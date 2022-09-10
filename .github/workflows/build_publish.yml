@@ -12,6 +12,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     name: Build and publish image job
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout master
         uses: actions/checkout@master
