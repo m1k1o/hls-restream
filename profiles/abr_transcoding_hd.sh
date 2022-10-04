@@ -31,7 +31,6 @@ ffmpeg -hide_banner \
             -f hls \
                   -hls_time 6 \
                   -hls_list_size 4 \
-                  -hls_wrap 10 \
                   -hls_delete_threshold 1 \
                   -hls_flags delete_segments \
                   -hls_start_number_source datetime \
@@ -54,7 +53,6 @@ ffmpeg -hide_banner \
             -f hls \
                   -hls_time 6 \
                   -hls_list_size 4 \
-                  -hls_wrap 10 \
                   -hls_delete_threshold 1 \
                   -hls_flags delete_segments \
                   -hls_start_number_source datetime \
@@ -77,7 +75,6 @@ ffmpeg -hide_banner \
             -f hls \
                   -hls_time 6 \
                   -hls_list_size 4 \
-                  -hls_wrap 10 \
                   -hls_delete_threshold 1 \
                   -hls_flags delete_segments \
                   -hls_start_number_source datetime \
